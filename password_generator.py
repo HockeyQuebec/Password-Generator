@@ -1,6 +1,8 @@
 import random
 from time import sleep
 import csv
+import threading
+
 #print("These are how many charecters the generater can chose from." + " " + str(26 + 26 +10 + 24 + 24 + 25))
 
 password_alphabet = [   "a" , "b" , "c" , "d" , "e" , "f" , "g" , "h" , "j" , "k" , "l" , "m" , "n" , "o" , 
@@ -51,38 +53,56 @@ if q_greek_althabet_caps.__contains__("y") == True:
     password_all_characters = password_all_characters + password_greek_symbols_caps
 
 password_length = int (input("length"))
-
-
+password_length = int(password_length)
+password_length = password_length//2
+print(password_length)
 
 
 generated_password = ""
 
-for i in range(0, password_length):
-    n = random.randint(0,len(password_all_characters)-1)
-    # print("index " + str(n) + " character " + password_all_characters[n]
-    generated_password = generated_password + password_all_characters[n]
+def task1():
+    global generated_password
+    for i in range(0, password_length):
+        n = random.randint(0,len(password_all_characters)-1)
+        generated_password = generated_password + password_all_characters[n]
+        print(generated_password)
 
+def task2():
+    global generated_password
+    for i in range(0, password_length):
+        h = random.randint(0,len(password_all_characters)-1)
+        generated_password = generated_password + password_all_characters[h]
+        print(generated_password)
+
+t1 = threading.Thread(target=task2, name=task1)
+t2 = threading.Thread(target=task2, name=task2)
+
+t1.start()
+t2.start()
+
+
+t1.join() 
+t2.join() 
 print(generated_password)
 
-write_to = input("would you like to save this password?")
 
-password_index_set = {"password"}
-
-if write_to.__contains__("y") == True:
-    label = input("What is the label for your passwords")
+write = input("would you like to save this")
+if write.__contains__("y") == True:
     password = open("passwords.txt","a")
-    password_index = (label + ":" + "\r\n" + "  " + generated_password + "\r\n")
-    password.write(password_index)
-    password_index_set.add(password_index)
+    label = input("What is the label for your passwords")
+    generated_password = (label + ":" + "\r\n" + "  " + generated_password + "\r\n")
+    password.write(generated_password)
+    password.close()
 
-    find = input("Would you like yo find a password?")
-    if find.__contains__("y") == True:
-        fin = open("passwords.txt")
-        for element in fin:
-            print(element)
 
     
-if write_to.__contains__("n") == True:
+find = input("Would you like yo find a password?")
+if find.__contains__("y") == True:
+    fin = open("passwords.txt")
+    for element in fin:
+        print(element)
+
+    
+if find.__contains__("n") == True:
     exit
     SystemExit
-    
