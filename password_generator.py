@@ -140,7 +140,6 @@ while ex==1:
     t12.join()
 
     # Generates all of the extra charaters
-    print(corrrect)
     for i in range(0, corrrect):
         t = random.randint(0,len(password_all_characters)-1)
         generated_password = generated_password + password_all_characters[t]
@@ -173,6 +172,7 @@ while ex==1:
         fin = open("passwords.txt")
         for element in fin:
             print(element)
+    
     v = input("would you like to exit?:")
 
     # This takes user input to deside if you want to exit
