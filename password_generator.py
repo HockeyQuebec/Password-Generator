@@ -35,7 +35,7 @@ def control_task():
 
         if worker_threads_running == 0:
             print("All threads have finished")
-            finish(generated_password)
+            finish()
             exit()
 
         sleep(3.0)
@@ -55,8 +55,7 @@ def password_worker_task():
 # print the password and ask if they want to save to file
 #
 def finish(generated_password):
-    
-        print(element)# Generates all of the extra charaters
+    # Generates all of the extra charaters
     for i in range(0, corrrect):
         t = random.randint(0,len(password_all_characters)-1)
         generated_password = generated_password + password_all_characters[t]
@@ -88,6 +87,7 @@ def finish(generated_password):
     if find.__contains__("y") == True:
         fin = open("passwords.txt")
         for element in fin:
+            print(element)
         ex = 0
     v = input("would you like to exit?:")
 
