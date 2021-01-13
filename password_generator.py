@@ -172,7 +172,7 @@ while ex==1:
         fin = open("passwords.txt")
         for element in fin:
             print(element)
-        ex = 0
+    
     v = input("would you like to exit?:")
 
     # This takes user input to deside if you want to exit
