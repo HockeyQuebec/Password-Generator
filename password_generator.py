@@ -24,32 +24,32 @@ password_all_characters = [""]
 
 print("Please respond with y or n")
 
-althabet = input("Would you like the alphabet?:")
+althabet = input("would you like the alphabet?")
 if althabet.__contains__("y") == True:
    password_all_characters = password_all_characters + password_alphabet
 
 
-q_althabet_caps = input("Would you like caps alphabet?:")
+q_althabet_caps = input("would you like caps alphabet?")
 if q_althabet_caps.__contains__("y") == True:
     password_all_characters = password_all_characters + password_alphabet_caps
 
 
-symbols = input("Would you like symbols?:")
+symbols = input("would you like symbols?")
 if symbols.__contains__("y") == True:
     password_all_characters = password_all_characters + password_symbols
 
 
-numbers = input("Would you like numbers?:")
+numbers = input("would you like numbers?")
 if numbers.__contains__("y") == True:
     password_all_characters = password_all_characters + password_numbers
 
 
-q_greek_althabet = input("Would you like the greek alphabet?:")
+q_greek_althabet = input("would you like the greek alphabet?")
 if q_greek_althabet.__contains__("y") == True:
     password_all_characters = password_all_characters + password_greek_symbols
 
 
-q_greek_althabet_caps = input("Would you like caps greek alphabet?:")
+q_greek_althabet_caps = input("would you like caps greek alphabet?")
 if q_greek_althabet_caps.__contains__("y") == True:
     password_all_characters = password_all_characters + password_greek_symbols_caps
 
@@ -143,17 +143,17 @@ for i in range(0, corrrect):
 print(generated_password)
 
 
-write = input("Would you like to save this?")
+write = input("would you like to save this")
 if write.__contains__("y") == True:
     password = open("passwords.txt","a")
-    label = input("What is the label for your password?:")
+    label = input("What is the label for your passwords")
     generated_password = (label + ":" + "\r\n" + "  " + generated_password + "\r\n")
     password.write(generated_password)
     password.close()
 
 
     
-find = input("Would you like you find a password?")
+find = input("Would you like yo find a password?")
 if find.__contains__("y") == True:
     fin = open("passwords.txt")
     for element in fin:
